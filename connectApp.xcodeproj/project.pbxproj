@@ -17,6 +17,9 @@
 		64C2414C2B93A4EC00C4A893 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C2414B2B93A4EC00C4A893 /* Util.swift */; };
 		64C2414E2B93B56200C4A893 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C2414D2B93B56200C4A893 /* RegisterViewController.swift */; };
 		64C241502B93BB4A00C4A893 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64C2414F2B93BB4A00C4A893 /* GoogleService-Info.plist */; };
+		64C241522B950DDE00C4A893 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C241512B950DDE00C4A893 /* Constants.swift */; };
+		64C241542B9512BE00C4A893 /* FUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C241532B9512BE00C4A893 /* FUser.swift */; };
+		64C241562B95280B00C4A893 /* FirebaseCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C241552B95280B00C4A893 /* FirebaseCollectionReference.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,9 @@
 		64C2414B2B93A4EC00C4A893 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		64C2414D2B93B56200C4A893 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		64C2414F2B93BB4A00C4A893 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		64C241512B950DDE00C4A893 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		64C241532B9512BE00C4A893 /* FUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUser.swift; sourceTree = "<group>"; };
+		64C241552B95280B00C4A893 /* FirebaseCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCollectionReference.swift; sourceTree = "<group>"; };
 		CC0A76EA8F8C7CDF26A0C639 /* Pods-connectApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-connectApp.release.xcconfig"; path = "Target Support Files/Pods-connectApp/Pods-connectApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				64C2414B2B93A4EC00C4A893 /* Util.swift */,
+				64C241512B950DDE00C4A893 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -97,6 +104,8 @@
 		64C241442B93A15600C4A893 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				64C241532B9512BE00C4A893 /* FUser.swift */,
+				64C241552B95280B00C4A893 /* FirebaseCollectionReference.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,11 +273,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64C241562B95280B00C4A893 /* FirebaseCollectionReference.swift in Sources */,
 				64C2414A2B93A3B600C4A893 /* LoginViewController.swift in Sources */,
 				64C2414E2B93B56200C4A893 /* RegisterViewController.swift in Sources */,
 				64C241302B93A04B00C4A893 /* AppDelegate.swift in Sources */,
+				64C241542B9512BE00C4A893 /* FUser.swift in Sources */,
 				64C241322B93A04B00C4A893 /* SceneDelegate.swift in Sources */,
 				64C2414C2B93A4EC00C4A893 /* Util.swift in Sources */,
+				64C241522B950DDE00C4A893 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

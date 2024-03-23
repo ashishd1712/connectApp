@@ -41,7 +41,15 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate 
     }
     
     @IBAction func signUpButtonClicked(_ sender: Any) {
-       
+        if validateFields(name: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, phone: phoneNumberTextField.text!, countryCode: countryCodeTextField.text!) {
+            let avatar = getAvatar()
+            FUser.registerUserWithEmail(email: emailTextField.text!, password: passwordTextField.text!, fullName: nameTextField.text!, avatar: avatar, phoneNumber: phoneNumberTextField.text!, countryCode: countryCodeTextField.text!) { error in
+                if error != nil {
+                    showAlert(title: "Error Registering", message: "Please try again", in: self)
+                }
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     private func setupUI() {
