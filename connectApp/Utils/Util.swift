@@ -37,7 +37,7 @@ func showAlert(title: String, message: String, in vc: UIViewController) {
 
 func instantiateViewController(identifier: String, animated: Bool, by vc: UIViewController, completion: (() -> Void)?) {
     
-    let newVC = UIStoryboard(name: "main", bundle: nil).instantiateViewController(withIdentifier: identifier)
+    let newVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
     newVC.modalPresentationStyle = .fullScreen
     vc.present(newVC, animated: animated, completion: completion)
 }
