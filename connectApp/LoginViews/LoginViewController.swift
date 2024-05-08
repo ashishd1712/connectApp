@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
     private func performLogin() {
         FUser.loginUserWithEmail(email: emailTextField.text!, password: passwordTextField.text!) { error in
             if error != nil {
-                showAlert(title: "Error", message: "Please enter correct login credentials", in: self)
+                showAlert(title: "Error Signing In", message: "Please enter correct login credentials", in: self)
             } else {
                 self.goToTabBar()
             }

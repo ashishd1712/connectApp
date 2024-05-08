@@ -73,15 +73,27 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate 
     func showActionSheet() {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let library = UIAlertAction(title: "Photo Library", style: .default) { (action) in
+        let takePhotoImage = UIImage(systemName: "camera")
+        let libraryImage = UIImage(systemName: "photo.badge.plus")
+        
+        let takePhoto = UIAlertAction(title: "Take Photo", style: .default) { (action) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                self.showPicker(with: .camera)
+            }
+        }
+        takePhoto.setValue(takePhotoImage, forKey: "image")
+        
+        let library = UIAlertAction(title: "Photo Library",style: .default) { (action) in
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                 self.showPicker(with: .photoLibrary)
             }
         }
+        library.setValue(libraryImage, forKey: "image")
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         sheet.addAction(library)
+        sheet.addAction(takePhoto)
         sheet.addAction(cancel)
         
         self.present(sheet, animated: true, completion: nil)

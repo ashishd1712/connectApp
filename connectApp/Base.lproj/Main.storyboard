@@ -172,7 +172,7 @@
                                     <action selector="cancelButtonClicked:" destination="Qxz-gE-mgg" eventType="touchUpInside" id="LcP-6t-Ekn"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XNS-js-JeA">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XNS-js-JeA">
                                 <rect key="frame" x="141" y="142" width="110" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="111.33" id="qOm-PU-uyD"/>
@@ -256,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oiq-qa-h6S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2395" y="320"/>
+            <point key="canvasLocation" x="2395" y="407"/>
         </scene>
         <!--Chat-->
         <scene sceneID="iet-VA-7YN">
@@ -412,11 +412,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bubble.left.and.bubble.right" catalog="system" width="128" height="96"/>
-        <image name="bubble.left.and.bubble.right.fill" catalog="system" width="128" height="102"/>
-        <image name="camera.circle" catalog="system" width="128" height="123"/>
-        <image name="phone" catalog="system" width="128" height="115"/>
-        <image name="phone.fill" catalog="system" width="128" height="114"/>
+        <image name="bubble.left.and.bubble.right" catalog="system" width="32" height="32"/>
+        <image name="bubble.left.and.bubble.right.fill" catalog="system" width="32" height="32"/>
+        <image name="camera.circle" catalog="system" width="32" height="32"/>
+        <image name="phone" catalog="system" width="32" height="32"/>
+        <image name="phone.fill" catalog="system" width="32" height="32"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
