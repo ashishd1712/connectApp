@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
     
     private func goToTabBar() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: USER_DID_LOGIN_NOTIFICATION), object: nil, userInfo: [kUSERID: FUser.currentID()])
-        instantiateViewController(identifier: "tabBarViewController", animated: true, by: self, completion: nil)
+        instantiateViewController(identifier: "tabBarController", animated: true, by: self, completion: nil)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import FirebaseFirestore
 
 func cornerRadius(for view: UIView) {
     view.layer.cornerRadius = 5
@@ -87,4 +88,20 @@ func dateFormatter() -> DateFormatter {
     dateFormatter.dateFormat = dateFormat
     
     return dateFormatter
+}
+
+func imageFromData(imageData: Data, with: @escaping (_ image: UIImage?) -> Void) {
+    var image: UIImage?
+    let decodedData = NSData(base64Encoded: imageData, options: NSData.Base64DecodingOptions(rawValue: 0))
+    
+    image = UIImage(data: decodedData! as Data)
+    with(image)
+}
+
+func dictionaryFromSnapshot(snapshots: [DocumentSnapshot]) -> [NSDictionary] {
+    var allMessages = [NSDictionary]()
+    for snapshot in snapshots {
+        allMessages.append(snapshot.data() as! NSDictionary)
+    }
+    return allMessages
 }
