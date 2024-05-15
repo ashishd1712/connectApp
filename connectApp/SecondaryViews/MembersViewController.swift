@@ -6,32 +6,101 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
-class MembersViewController: UITableViewController {
-
+class MembersViewController: UITableViewController, UISearchResultsUpdating {
+    
+    var allUsers: [FUser] = []
+    var filteredUsers: [FUser] = []
+    var allUsersGroupped = NSDictionary() as! [String: [FUser]]
+    var sectionTitleList: [String] = []
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.title = "Members"
+        navigationItem.largeTitleDisplayMode = .never
+        tableView.tableFooterView = UIView()
+        
+        navigationItem.searchController = searchController
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        
+        loadMembers()
+    }
+    
+    
+    private func loadMembers() {
+        var query = collectionReference(.User).order(by: kFULLNAME, descending: false)
+        
+        query.getDocuments { snapshot, error in
+            self.allUsers = []
+            self.sectionTitleList = []
+            self.allUsersGroupped = [:]
+            
+            if error != nil {
+                self.tableView.reloadData()
+                return
+            }
+            
+            guard let snapshot = snapshot else { return }
+            
+            if !snapshot.isEmpty {
+                for member in snapshot.documents {
+                    let memberDictionary = member.data() as NSDictionary
+                    let fUser = FUser(_dictionary: memberDictionary)
+                    if fUser.objectID != FUser.currentID() {
+                        self.allUsers.append(fUser)
+                    }
+                }
+                self.splitDataIntoSections()
+                self.tableView.reloadData()
+            }
+            self.tableView.reloadData()
+        }
+    }
+    
+    fileprivate func splitDataIntoSections() {
+        var sectionTitle: String = ""
+        
+        for i in 0..<self.allUsers.count {
+            let currentUser = self.allUsers[i]
+            let firstChar = currentUser.fullName.first!
+            let firstCharString = "\(firstChar.uppercased())"
+            
+            if firstCharString != sectionTitle {
+                sectionTitle = firstCharString
+                self.allUsersGroupped[sectionTitle] = []
+                
+                if !sectionTitleList.contains(sectionTitle) {
+                    self.sectionTitleList.append(sectionTitle)
+                }
+            }
+            self.allUsersGroupped[firstCharString]?.append(currentUser)
+        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return 1
+        } else {
+            return allUsersGroupped.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredUsers.count
+        } else {
+            let sectionTitle = self.sectionTitleList[section]
+            let users = self.allUsersGroupped[sectionTitle]
+            return users!.count
+        }
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
@@ -39,51 +108,56 @@ class MembersViewController: UITableViewController {
 
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        var user: FUser
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            user = filteredUsers[indexPath.row]
+        } else {
+            let sectionTitle = self.sectionTitleList[indexPath.section]
+            let users = self.allUsersGroupped[sectionTitle]
+            user = users![indexPath.row]
+        }
+        
+        let cell = tableView.cellForRow(at: indexPath) as! MembersCell
+        if cell.accessoryType == .checkmark {
+            cell.accessoryType = .none
+        } else {
+            cell.accessoryType = .checkmark
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return nil
+        } else {
+            return self.sectionTitleList
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return ""
+        } else {
+            return self.sectionTitleList[section]
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return index
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    // MARK: Searching
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContactsForSearch(searchText: searchController.searchBar.text!)
     }
-    */
-
+    
+    private func filterContactsForSearch(searchText: String, scope: String = "All") {
+        filteredUsers = allUsers.filter { (user) -> Bool in
+            return user.fullName.lowercased().contains(searchText.lowercased())
+        }
+        tableView.reloadData()
+    }
 }

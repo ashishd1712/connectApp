@@ -262,7 +262,7 @@
         <!--Chat-->
         <scene sceneID="iet-VA-7YN">
             <objects>
-                <viewController id="usE-Ye-lDR" customClass="RecentChatViewController" customModule="connectApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="recentChatViewController" id="usE-Ye-lDR" customClass="RecentChatViewController" customModule="connectApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lib-Rr-fxu">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -303,7 +303,7 @@
                                     <constraint firstItem="LhI-2d-Alk" firstAttribute="leading" secondItem="fbk-90-q5T" secondAttribute="leading" constant="10" id="mvY-ue-vfR"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FXT-v0-n86">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FXT-v0-n86" userLabel="TableView">
                                 <rect key="frame" x="0.0" y="144" width="393" height="625"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -411,7 +411,7 @@
                         <color key="badgeColor" systemColor="systemTealColor"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="newChatButton" destination="Qhu-5G-ld3" id="gkh-lI-tOP"/>
+                        <outlet property="tableVIew" destination="FXT-v0-n86" id="lCO-r6-Im6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lep-5n-nxY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -421,7 +421,7 @@
         <!--Members View Controller-->
         <scene sceneID="57g-cA-aHn">
             <objects>
-                <tableViewController id="pAL-9Y-gH9" customClass="MembersViewController" customModule="connectApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="membersViewController" id="pAL-9Y-gH9" customClass="MembersViewController" customModule="connectApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="oxc-j6-IoB">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

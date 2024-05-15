@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
      }
     
     @IBAction func registerButtonClicked(_ sender: Any) {
-        instantiateViewController(identifier: "registerViewController", animated: true, by: self, completion: nil)
+        instantiateViewController(identifier: StoryboardID.registerViewController, animated: true, by: self, completion: nil)
     }
     
     private func setupUI() {
@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
     
     private func goToTabBar() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: USER_DID_LOGIN_NOTIFICATION), object: nil, userInfo: [kUSERID: FUser.currentID()])
-        instantiateViewController(identifier: "tabBarController", animated: true, by: self, completion: nil)
+        instantiateViewController(identifier: StoryboardID.tabBarController, animated: true, by: self, completion: nil)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -103,3 +103,11 @@ public let kWITHUSERFULLNAME = "withUserFullName"
 public let kWITHUSERAVATAR = "withUserAvatar"
 public let kISINCOMING = "isIncoming"
 
+
+// MARK: Storyboard IDs
+struct StoryboardID {
+    static let membersViewController = "membersViewController"
+    static let loginViewController = "loginViewController"
+    static let registerViewController = "registerViewController"
+    static let tabBarController = "tabBarController"
+}
