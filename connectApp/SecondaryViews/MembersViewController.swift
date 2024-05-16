@@ -27,9 +27,15 @@ class MembersViewController: UITableViewController, UISearchResultsUpdating {
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         
+        let nextButton = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextButtonPressed))
+        self.navigationItem.rightBarButtonItem = nextButton
+        self.navigationItem.rightBarButtonItems?.first?.isEnabled = false
         loadMembers()
     }
     
+    @objc func nextButtonPressed() {
+        
+    }
     
     private func loadMembers() {
         var query = collectionReference(.User).order(by: kFULLNAME, descending: false)
@@ -102,10 +108,18 @@ class MembersViewController: UITableViewController, UISearchResultsUpdating {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellID.memberCell, for: indexPath) as! MembersCell
 
-        // Configure the cell...
-
+        var user: FUser
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            user = filteredUsers[indexPath.row]
+        } else {
+            let sectionTitle = self.sectionTitleList[indexPath.section]
+            let users = self.allUsersGroupped[sectionTitle]
+            user = users![indexPath.row]
+        }
+        cell.generateCellFor(fUser: user, at: indexPath)
         return cell
     }
     

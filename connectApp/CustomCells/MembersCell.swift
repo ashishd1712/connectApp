@@ -8,9 +8,12 @@
 import UIKit
 
 class MembersCell: UITableViewCell {
-
-    @IBOutlet weak var userImageView: UIImageView!
+    
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var userImageView: UIImageView!
+    
+    var indexPath: IndexPath!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,6 +23,19 @@ class MembersCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func generateCellFor(fUser: FUser, at indexPath: IndexPath) {
+        self.indexPath = indexPath
+        self.nameLabel.text = fUser.fullName
+        
+        if fUser.avatar != "" {
+            imageFromData(imageData: fUser.avatar) { avatarImage in
+                if avatarImage != nil {
+                    self.userImageView.image = avatarImage!.circleMasked
+                }
+            }
+        }
     }
 
 }

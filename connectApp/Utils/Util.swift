@@ -90,7 +90,7 @@ func dateFormatter() -> DateFormatter {
     return dateFormatter
 }
 
-func imageFromData(imageData: Data, with: @escaping (_ image: UIImage?) -> Void) {
+func imageFromData(imageData: String, with: @escaping (_ image: UIImage?) -> Void) {
     var image: UIImage?
     let decodedData = NSData(base64Encoded: imageData, options: NSData.Base64DecodingOptions(rawValue: 0))
     

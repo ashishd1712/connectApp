@@ -13,7 +13,7 @@ class RecentChatViewController: UIViewController {
     var recentChats: [NSDictionary] = []
     var avatars = [UIImage]()
     var recentListener: ListenerRegistration!
-    
+        
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -23,12 +23,13 @@ class RecentChatViewController: UIViewController {
         self.tableView.tableFooterView = view
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         recentListener.remove()
     }
     
     @IBAction func newChatButtonClicked(_ sender: Any) {
-        instantiateViewController(identifier: StoryboardID.membersViewController, animated: true, by: self, completion: nil)
+        let membersVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: StoryboardID.membersViewController) as! MembersViewController
+        self.navigationController?.pushViewController(membersVC, animated: true)
     }
     
     func loadChats() {

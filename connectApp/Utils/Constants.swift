@@ -106,8 +106,14 @@ public let kISINCOMING = "isIncoming"
 
 // MARK: Storyboard IDs
 struct StoryboardID {
-    static let membersViewController = "membersViewController"
-    static let loginViewController = "loginViewController"
-    static let registerViewController = "registerViewController"
-    static let tabBarController = "tabBarController"
+    static let membersViewController: String = "membersViewController"
+    static let loginViewController: String = "loginViewController"
+    static let registerViewController: String = "registerViewController"
+    static let tabBarController: String = "tabBarViewController"
+}
+
+// MARK: Reusable Cell IDs
+
+struct CellID {
+    static let memberCell = "MemberCell"
 }
