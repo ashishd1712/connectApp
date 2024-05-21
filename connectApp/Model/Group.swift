@@ -16,7 +16,7 @@ class Group {
         groupDictionary = NSMutableDictionary(objects: [groupID, subject, ownerID, members, avatar], forKeys: [kGROUPID as NSCopying, kNAME as NSCopying, kOWNERID as NSCopying, kMEMBERS as NSCopying, kAVATAR as NSCopying])
     }
     
-    func saveGroups() {
+    func saveGroup() {
         let date = dateFormatter().string(from: Date())
         groupDictionary[kDATE] = date
         collectionReference(.Group).document(groupDictionary[kGROUPID] as! String).setData(groupDictionary as! [String: Any])

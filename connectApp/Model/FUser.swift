@@ -32,43 +32,37 @@ class FUser {
     
     init(_dictionary: NSDictionary) {
         objectID = _dictionary[kOBJECTID] as! String
-        
+          
         if let mail = _dictionary[kEMAIL] {
             email = mail as! String
         } else {
             email = ""
         }
-        
         if let fname = _dictionary[kFULLNAME] {
             fullName = fname as! String
         } else {
             fullName = ""
         }
-        
         if let avat = _dictionary[kAVATAR] {
             avatar = avat as! String
         } else {
             avatar = ""
         }
-        
-        if let phone = _dictionary[kPHONE] {
-            phoneNumber = phone as! String
-        } else {
-            phoneNumber = ""
-        }
-        
         if let onl = _dictionary[kISONLINE] {
             isOnline = onl as! Bool
         } else {
             isOnline = false
         }
-        
+        if let phone = _dictionary[kPHONE] {
+            phoneNumber = phone as! String
+        } else {
+            phoneNumber = ""
+        }
         if let countryC = _dictionary[kCOUNTRYCODE] {
             countryCode = countryC as! String
         } else {
             countryCode = ""
         }
-        
         if let cont = _dictionary[kCONTACT] {
             contacts = cont as! [String]
         } else {
@@ -80,7 +74,7 @@ class FUser {
         return Auth.auth().currentUser!.uid
     }
     
-    class func currentUser() -> FUser? {
+    class func currentUser () -> FUser? {
         if Auth.auth().currentUser != nil {
             if let dictionary = UserDefaults.standard.object(forKey: kCURRENTUSER) {
                 return FUser.init(_dictionary: dictionary as! NSDictionary)

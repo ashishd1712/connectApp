@@ -15,6 +15,9 @@ class MembersViewController: UITableViewController, UISearchResultsUpdating {
     var allUsersGroupped = NSDictionary() as! [String: [FUser]]
     var sectionTitleList: [String] = []
     
+    var memberIDsOfGroupChat: [String] = []
+    var membersOfGroupChat: [FUser] = []
+    
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
@@ -26,6 +29,7 @@ class MembersViewController: UITableViewController, UISearchResultsUpdating {
         navigationItem.searchController = searchController
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
+        searchController.searchResultsUpdater = self
         
         let nextButton = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextButtonPressed))
         self.navigationItem.rightBarButtonItem = nextButton
@@ -34,7 +38,12 @@ class MembersViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     @objc func nextButtonPressed() {
+        let newGroupVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: StoryboardID.newGroupViewController) as! NewGroupViewController
         
+        newGroupVC.memberIDs = memberIDsOfGroupChat
+        newGroupVC.allMembers = membersOfGroupChat
+        
+        self.navigationController?.pushViewController(newGroupVC, animated: true)
     }
     
     private func loadMembers() {
@@ -141,6 +150,20 @@ class MembersViewController: UITableViewController, UISearchResultsUpdating {
         } else {
             cell.accessoryType = .checkmark
         }
+        
+        let selected = memberIDsOfGroupChat.contains(user.objectID)
+        
+        if selected {
+            let objectIndex = memberIDsOfGroupChat.firstIndex(of: user.objectID)
+            memberIDsOfGroupChat.remove(at: objectIndex!)
+            membersOfGroupChat.remove(at: objectIndex!)
+        } else {
+            membersOfGroupChat.append(user)
+            memberIDsOfGroupChat.append(user.objectID)
+        }
+        
+        self.navigationItem.rightBarButtonItem?.isEnabled = memberIDsOfGroupChat.count > 0
+        
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {

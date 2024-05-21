@@ -61,7 +61,7 @@ func createRecentsForNewMembers(groupID: String, groupName: String, membersToPus
 }
 
 // MARK: Restart Recent Chat
-func restartRecentChar(recent: NSDictionary) {
+func restartRecentChat(recent: NSDictionary) {
 //    if recent[kTYPE] as! String == kPRIVATE {
 //        createRecent(members: recent[kMEMBERSTOPUSH] as! [String], chatRoomID: recent[kCHATROOMID] as! String, withUserName: FUser.currentUser()!.fullName, type: kPRIVATE, users: [FUser.currentUser()!], avatarOfGroup: nil)
 //    }

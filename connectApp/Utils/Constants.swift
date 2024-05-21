@@ -32,7 +32,7 @@ public let kAVATAR = "avatar"
 public let kCURRENTUSER  = "currentUser"
 public let kISONLINE = "isOnline"
 public let kVERIFICATIONCODE = "firebase_verification"
-public let kFILEREFFERENCE = "gs://connectapp-ec7e3.appspot.com"
+public let kFILEREFERENCE = "gs://connectapp-ec7e3.appspot.com"
 
 //
 public let kBACKGROUBNDIMAGE = "backgroundImage"
@@ -110,10 +110,14 @@ struct StoryboardID {
     static let loginViewController: String = "loginViewController"
     static let registerViewController: String = "registerViewController"
     static let tabBarController: String = "tabBarViewController"
+    static let newGroupViewController: String = "newGroupVIewController"
+    static let mapViewController: String = "mapViewController"
 }
 
 // MARK: Reusable Cell IDs
 
 struct CellID {
+    static let recentCell = "recentCell"
     static let memberCell = "MemberCell"
+    static let participantCell = "ParticipantCell"
 }
