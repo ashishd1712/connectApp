@@ -343,6 +343,9 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZsM-jC-oar">
                                                     <rect key="frame" x="108" y="16.333333333333332" width="191" height="21.999999999999996"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="JJN-l4-gX0"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -393,6 +396,7 @@
                                                 <constraint firstItem="t11-Xb-Sx6" firstAttribute="top" secondItem="Khk-T7-aPR" secondAttribute="top" constant="5" id="7wO-f8-keX"/>
                                                 <constraint firstItem="cbl-Kk-TdT" firstAttribute="top" secondItem="Khk-T7-aPR" secondAttribute="topMargin" constant="24" id="Bdx-dn-cJ8"/>
                                                 <constraint firstItem="cbl-Kk-TdT" firstAttribute="trailing" secondItem="Khk-T7-aPR" secondAttribute="trailingMargin" id="Jhf-Gj-DHW"/>
+                                                <constraint firstItem="ZsM-jC-oar" firstAttribute="top" secondItem="Khk-T7-aPR" secondAttribute="topMargin" constant="5.3300000000000001" id="K7v-22-H2Y"/>
                                                 <constraint firstAttribute="bottom" secondItem="t11-Xb-Sx6" secondAttribute="bottom" constant="5" id="P9K-nB-lex"/>
                                                 <constraint firstItem="cbl-Kk-TdT" firstAttribute="leading" secondItem="BoI-ZI-xdX" secondAttribute="trailing" constant="8" id="afs-FT-bXB"/>
                                                 <constraint firstItem="BoI-ZI-xdX" firstAttribute="leading" secondItem="t11-Xb-Sx6" secondAttribute="trailing" constant="8" id="c6s-MB-7oe"/>
